@@ -1,0 +1,59 @@
+body {
+  margin: 50px 0px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.image-container {
+  max-height: 400px;
+  max-width: 400px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  margin: 20px 15px;
+  padding: 15px 0px;
+  object-fit: cover;
+}
+
+.form-control {
+  margin: 20px 0px;
+}
+
+.go-back-btn {
+  margin: 20px 15px;
+  padding: 15px 0px;
+}
+
+.jumbotron {
+  height: 250px;
+  position: relative;
+  background: url('./flouffy-3ZZsGDaDVq0-unsplash.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.jumbotron:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.jumbotron .row {
+  z-index: 2;
+  position: relative;
+}
