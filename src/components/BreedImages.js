@@ -6,16 +6,15 @@ function BreedImages({ match }) {
   const [selectedBreed, setSelectedBreed] = useState([]);
   const [spinner, setSpinner] = useState(true);
 
-  const fetchImage = async () => {
-    const res = await fetch(`https://dog.ceo/api/breed/${breedname}/images`);
-    const data = await res.json();
-    setSelectedBreed(data.message);
-    setSpinner(false);
-  };
-
   useEffect(() => {
+    const fetchImage = async () => {
+      const res = await fetch(`https://dog.ceo/api/breed/${breedname}/images`);
+      const data = await res.json();
+      setSelectedBreed(data.message);
+      setSpinner(false);
+    };
     fetchImage();
-  }, []);
+  }, [breedname]);
 
   return (
     <div className='container'>
