@@ -4,12 +4,18 @@ import { Link } from 'react-router-dom';
 function BreedImages({ match }) {
   const { breedname } = match.params;
   const [selectedBreed, setSelectedBreed] = useState([]);
+  const [spinner, setSpinner] = useState(true);
+
+  const fetchImage = async () => {
+    const res = await fetch(`https://dog.ceo/api/breed/${breedname}/images`);
+    const data = await res.json();
+    setSelectedBreed(data.message);
+    setSpinner(false);
+  };
+
   useEffect(() => {
-    fetch(`https://dog.ceo/api/breed/${breedname}/images`)
-      .then((res) => res.json())
-      .then((data) => setSelectedBreed(data.message))
-      .catch((error) => console.log(error));
-  }, [breedname]);
+    fetchImage();
+  }, []);
 
   return (
     <div className='container'>
@@ -20,7 +26,7 @@ function BreedImages({ match }) {
       </section>
 
       <section className='row'>
-        {selectedBreed.length > 0
+        {!spinner
           ? selectedBreed.map((item, index) => (
               <div
                 key={index}

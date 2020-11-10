@@ -10,9 +10,9 @@ function List({ list }) {
   }, [list]);
 
   const handleInputChange = (e) => {
-    let currentList = []; // Variable to hold the original version of the list
+    let currentList = []; // Variable to hold the original list
 
-    let newList = []; // Variable to hold the filtered list before putting into state
+    let newList = []; // Variable to hold the filtered list before changing the breedList
 
     if (e.target.value !== '') {
       currentList = list;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import App from './components/App';
+import Home from './components/Home';
 import BreedImages from './components/BreedImages';
 
 function Routes() {
@@ -8,7 +8,7 @@ function Routes() {
     <div>
       <Router>
         <Switch>
-          <Route exact path='/' component={App}></Route>
+          <Route exact path='/' component={Home}></Route>
           <Route exact path='/:breedname' component={BreedImages}></Route>
         </Switch>
       </Router>

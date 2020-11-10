@@ -37,7 +37,7 @@ img {
 .jumbotron {
   height: 250px;
   position: relative;
-  background: url('./flouffy-3ZZsGDaDVq0-unsplash.jpg') no-repeat center center;
+  background: url('./heroImage.jpg') no-repeat center center;
   background-size: cover;
 }
 
