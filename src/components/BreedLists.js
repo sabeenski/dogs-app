@@ -1,37 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function List({ list }) {
-  const [breedList, setBreedList] = useState();
+  const [searchTerm, setsearchTerm] = useState('');
   const [sortType, setSortType] = useState('asc');
 
-  useEffect(() => {
-    setBreedList(list);
-  }, [list]);
-
   const handleInputChange = (e) => {
-    let currentList = []; // Variable to hold the original list
-
-    let newList = []; // Variable to hold the filtered list before changing the breedList
-
-    if (e.target.value !== '') {
-      currentList = list;
-      newList = currentList.filter((breed) =>
-        breed.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-    } else {
-      newList = list;
-    }
-    setBreedList(newList);
+    setsearchTerm(e.target.value);
   };
 
   const handleSort = (e) => {
     setSortType(e.target.value);
   };
 
+  const filteredList = list.filter((breed) =>
+    breed.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   const sorted =
-    breedList &&
-    breedList.sort((a, b) => {
+    filteredList &&
+    filteredList.sort((a, b) => {
       const sortOrder = sortType === 'asc' ? 1 : -1;
       return sortOrder * a.localeCompare(b);
     });
@@ -58,20 +45,27 @@ function List({ list }) {
               className='custom-select form-control'
               onChange={handleSort}
             >
-              <option value='asc'>Sort By</option>
               <option value='asc'>Alphabetical A-Z</option>
               <option value='desc'>Alphabetical Z-A</option>
             </select>
           </div>
         </section>
       </div>
-      <div className='list'>
-        <section>
+      <div>
+        <section className='row'>
           {sorted &&
             sorted.map((breed, index) => (
-              <li key={index}>
-                <Link to={breed}>{breed}</Link>
-              </li>
+              <div className='col-xs-12 col-sm-6 col-md-4'>
+                <Link to={breed} key={index} className='hyperlink'>
+                  <div key={index} className='card'>
+                    <div className='card-body'>
+                      <p className='card-text'>
+                        <strong>{breed.toUpperCase()}</strong>
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
             ))}
         </section>
       </div>
